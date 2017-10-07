@@ -1,0 +1,126 @@
+<div *ngIf="artista" class="container main-container animated fadeIn fast">
+  <div class="row">
+    <div class="col-md-3 rext-center">
+      <img [src]="artista.images | sinfoto" class="img-thumbnail img-circle">
+      <br>
+    </div>
+    <div class="col-md-9">
+      <h3>{{ artista.name }} <small> Popularidad  {{ artista.popularity }}%</small></h3>
+      <hr>
+      <a [href]="artista.external_url?.spoify" class="btn btn-outline-success">Ver página</a>
+      <a [routerLink]="['/buscar']" class="btn btn-outline-danger">Regresar</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="track" class="container">
+  <h3>Top de {{ artista.name }}</h3>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-inverse table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Foto</th>
+              <th>Canción</th>
+              <th>Popularidad</th>
+              <th>Preview</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pista of track; let i=index;">
+              <td>{{ i+1 }}</td>
+              <td>
+                <img [src]="pista.album?.images | sinfoto" class="img-fluid img-50">
+              </td>
+              <td>{{ pista.name }}</td>
+              <td>{{ pista.popularity }}%</td>
+              <td>
+              <!--  <iframe [src]="pista.uri | domseguro:'https://open.spotify.com/embed?uri'" width="300" height="80" frameborder="0"
+                  allowtransparency="true"></iframe> -->
+                 <iframe [src]=" pista.uri | domseguro:'https://embed.spotify.com/?uri'" width="300" height="80" frameborder="0"
+                    allowtransparency="true"></iframe> 
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--<div class="container top-30">
+
+  <div class="row">
+    <div class="col-md-3 text-center">
+      <img *ngIf="artista" [src]="artista.images | sinfoto:1" alt="" class="img-fluid img-thumbnail img-circle">
+    </div>
+
+    <div class="col-md-9">
+      <div class="jumbotron jumbotron-fluid" *ngIf="artista">
+        <div class="container">
+          <h1 class="display-3">{{artista.name}}</h1>
+          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+          <a [href]="artista.external_urls.spotify" class="btn btn-outline-primary" target="_new">Perfil artista</a>
+          <button [routerLink]="['/buscar']" type="button" class="btn btn-outline-danger">Regresar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="table-responsive">
+          <table class=" table table-inverse table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Album</th>
+                <th>Cancion</th>
+                <th>Popularidad</th>
+                <th>Preview</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pista of track; let i = index">
+                <td>{{ i + 1}}</td>
+                <td><img [src]="pista.album.images | sinfoto:2" alt="" class="img-fluid img-50"></td>
+                <td>{{ pista.name }}</td>
+                <dt>{{ pista.popularity }}%</dt>
+                <td>
+                  <!-- <audio controls>
+                    <source [src]="pista.preview_url" type="">
+                      tu navegador es muy viejo
+                  </audio> 
+                  <iframe [src]="track.uri | domseguro:'https://embed.spotify.com/?uri='" width="300" height="80" frameborder="0"
+                    allowtransparency="true"></iframe> ->
+
+                  <iframe [src]="track.uri | domseguro: https://open.spotify.com/embed?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="300" height="80" frameborder="0"
+                    allowtransparency="true"></iframe>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+   [src]="track.uri | domseguro:'https://open.spotify.com/embed?uri='"
+
+  <iframe src="https://open.spotify.com/embed?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="300" height="80" frameborder="0"
+    allowtransparency="true"></iframe>
+-->
