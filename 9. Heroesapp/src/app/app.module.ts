@@ -9,6 +9,9 @@ import { APP_ROUTING } from './app.routes'
 //servicios
 import { HeroesService } from './services/heroes.service'
 
+//pipes
+import { KeysPipe } from './pipes/keys.pipe';
+
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { HeroeComponent } from './components/heroes/heroe.component';
@@ -17,7 +20,8 @@ import { HeroeComponent } from './components/heroes/heroe.component';
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroeComponent
+    HeroeComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
