@@ -9,11 +9,13 @@ import { HeroesService } from '../../services/heroes.service'
 export class HeroesComponent {
 
   heroes:any[] = [];
+  loading:boolean = true;
 
   constructor( private _heroesService: HeroesService) { 
     this._heroesService.getHeroes().subscribe(data=>{
       console.log(data);
       this.heroes = data;
+      this.loading = false;
     })
   }
 
